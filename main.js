@@ -109,7 +109,7 @@ function updateRolls() {
 		}
 	}
 	setText(errorContainer, [...errors].join("; "));
-	if (errors.length) errorContainer.classList.remove('hidden');
+	if (errors.size) errorContainer.classList.remove('hidden');
 	else errorContainer.classList.add('hidden');
 	const upperSectionTotal = scoreboard.slice(0, 6).reduce((a, b) => a + b.score % 100, 0);
 	const gotBonus = upperSectionTotal >= 63;
