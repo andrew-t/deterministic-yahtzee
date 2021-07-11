@@ -12,22 +12,25 @@ function histogram(dice) {
 	return [1,2,3,4,5,6].map(n => dice.filter(d => d == n).length);
 }
 
-function straight(n) {
-	return dice => {
-		let run = 0;
-		for (const v of histogram(dice))
-			if (v == 0) run = 0;
-			else if (++run >= n) return true;
-		return false
-	};
-}
-
 function ofAKind(n) {
 	return dice => Math.max(...histogram(dice)) >= n;
 }
 
 function always() { return true; }
 function constant(n) { return () => n; }
+
+export const isYahtzee = ofAKind(5);
+
+function straight(n) {
+	return dice => {
+		if (isYahtzee(dice)) return true;
+		let run = 0;
+		for (const v of histogram(dice))
+			if (v == 0) run = 0;
+			else if (++run >= n) return true;
+		return false;
+	};
+}
 
 export const upperSectionNames = {
 	1: 'ones',
@@ -37,8 +40,6 @@ export const upperSectionNames = {
 	5: 'fives',
 	6: 'sixes'
 };
-
-export const isYahtzee = ofAKind(5);
 
 export const upperSection = [
 	{
