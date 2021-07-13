@@ -1,4 +1,4 @@
-import { isYahtzee, bothSections as scoreboardRows } from './scoreboard-rows.js';
+import { isYahtzee, bothSections as scoreboardRows, upperSectionNames } from './scoreboard-rows.js';
 
 const search = new URLSearchParams(window.location.search),
 	preDice = search.get('dice');
@@ -96,8 +96,10 @@ function updateRolls() {
 		for (const die of roll.heldDice.sort()) displayDie(el.display, die);
 		for (const option of el.options) {
 			const row = getRowById(option.value);
-			const score = row.condition(roll.heldDice) * row.score(roll.heldDice)
-				+ (yahtzee.score && isYahtzee(roll.heldDice)) * 100;
+			const rollAllowed = row.condition(roll.heldDice) ||
+				(yahtzee.score && isYahtzee(roll.heldDice) && scored.has(upperSectionNames[roll.heldDice[0]]));
+			let score = rollAllowed ? row.score(roll.heldDice) : 0;
+			if (score && yahtzee.score && isYahtzee(roll.heldDice)) score += 100;
 			setText(option, `${row.name} (${scored.has(row.id) ? 'already used' : score})`);
 			if (el.row.value == row.id)
 				if (scored.has(row.id)) {

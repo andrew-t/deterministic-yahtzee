@@ -106,17 +106,17 @@ body {
 }
 
 .row-0  { background: #fcc; }
-.row-1  { background: #fec; }
-.row-2  { background: #ffc; }
-.row-3  { background: #efc; }
-.row-4  { background: #cfc; }
-.row-5  { background: #cfe; }
-.row-6  { background: #cff; }
-.row-7  { background: #cef; }
-.row-8  { background: #ccf; }
-.row-9  { background: #ecf; }
-.row-10 { background: #fcf; }
-.row-11 { background: #fce; }
+.row-1  { background: #cff; }
+.row-2  { background: #fcf; }
+.row-3  { background: #cfc; }
+.row-4  { background: #ccf; }
+.row-5  { background: #ffc; }
+.row-6  { background: #fcc; }
+.row-7  { background: #cff; }
+.row-8  { background: #fcf; }
+.row-9  { background: #cfc; }
+.row-10 { background: #ccf; }
+.row-11 { background: #ffc; }
 .row-12 { background: #fcc; }
 
 #rolls .error { background: #f88; }

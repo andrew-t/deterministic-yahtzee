@@ -23,7 +23,6 @@ export const isYahtzee = ofAKind(5);
 
 function straight(n) {
 	return dice => {
-		if (isYahtzee(dice)) return true;
 		let run = 0;
 		for (const v of histogram(dice))
 			if (v == 0) run = 0;
